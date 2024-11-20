@@ -68,6 +68,11 @@ const Style = () => {
         scrollbar-width:thin;
         scrollbar-color: #49b1f5 transparent
     }
+
+      /* 文章页隐藏更新时间 */
+    #article-wrapper > div.wow.fadeInUp.px-10 > section > div.flex.flex-wrap.gap-3.mt-5.text-sm > span.whitespace-nowrap {
+      display: none;
+    }
     
 
   `}</style>)
