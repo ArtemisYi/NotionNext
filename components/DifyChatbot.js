@@ -3,62 +3,32 @@ import { siteConfig } from '@/lib/config';
 
 export default function DifyChatbot() {
   useEffect(() => {
+    // 这里使用 siteConfig() 函数调用来获取配置值
     if (!siteConfig('DIFY_CHATBOT_ENABLED')) {
       return;
     }
 
-    // 检查 token 是否存在
-    const token = siteConfig('DIFY_CHATBOT_TOKEN');
-    if (!token) {
-      console.error('DifyChatbot token is missing or invalid');
-      return;
-    }
-
-    // 配置 DifyChatbot
+    // 配置 DifyChatbot，同样需要调用 siteConfig() 获取相应的配置值
     window.difyChatbotConfig = {
-      token: token, // 确保 token 正确
-      containerProps: {
-        style: {
-          bottom: '20px',
-          right: '40px',
-          backgroundColor: '#155EEF',
-        },
-      },
+      token: siteConfig('DIFY_CHATBOT_TOKEN'),
+      baseUrl: siteConfig('DIFY_CHATBOT_BASE_URL')
     };
 
-    // 动态加载 DifyChatbot 脚本
+    // 加载 DifyChatbot 脚本
     const script = document.createElement('script');
-    script.src = 'https://udify.app/embed.min.js'; // 使用官方提供的 URL
-    script.id = token;
+    script.src = `${siteConfig('DIFY_CHATBOT_BASE_URL')}/embed.min.js`; // 注意调用 siteConfig()
+    script.id = siteConfig('DIFY_CHATBOT_TOKEN'); // 注意调用 siteConfig()
     script.defer = true;
     document.body.appendChild(script);
 
-    // 添加样式
-    const style = document.createElement('style');
-    style.innerHTML = `
-      #dify-chatbot-bubble-button {
-        background-color: #1C64F2 !important;
-      }
-      #dify-chatbot-bubble-window {
-        width: 24rem !important;
-        height: 40rem !important;
-      }
-    `;
-    document.head.appendChild(style);
-
     return () => {
-      // 清理脚本
-      const existingScript = document.getElementById(token);
-      if (existingScript) {
+      // 在组件卸载时清理 script 标签
+      const existingScript = document.getElementById(siteConfig('DIFY_CHATBOT_TOKEN')); // 注意调用 siteConfig()
+      if (existingScript && existingScript.parentNode && existingScript.parentNode.contains(existingScript)) {
         existingScript.parentNode.removeChild(existingScript);
       }
-
-      // 清理样式
-      if (style.parentNode) {
-        style.parentNode.removeChild(style);
-      }
     };
-  }, []); // 依赖数组为空，确保脚本仅加载一次
+  }, []); // 注意依赖数组为空，意味着脚本将仅在加载页面时执行一次
 
   return null;
 }
