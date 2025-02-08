@@ -187,6 +187,10 @@ const nextConfig = {
                 key: 'Access-Control-Allow-Headers',
                 value:
                   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+              },
+              {
+                key: 'Content-Security-Policy',
+                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: mediastream: blob: filesystem: *.dify.ai *.udify.app udify.app .cloudflareinsights.com https://log.cookieyes.com https://cdn-cookieyes.com .sentry.io http://localhost: http://127.0.0.1: https://analytics.google.com googletagmanager.com *.googletagmanager.com https://www.google-analytics.com https://api.github.com https://cdnjs.cloudflare.com https://cdn.mathjax.org"
               }
             ]
           }
