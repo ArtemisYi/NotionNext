@@ -190,7 +190,19 @@ const nextConfig = {
               },
               {
                 key: 'Content-Security-Policy',
-                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: mediastream: blob: filesystem: *.dify.ai *.udify.app udify.app .cloudflareinsights.com https://log.cookieyes.com https://cdn-cookieyes.com .sentry.io http://localhost: http://127.0.0.1: https://analytics.google.com googletagmanager.com *.googletagmanager.com https://www.google-analytics.com https://api.github.com https://cdnjs.cloudflare.com https://cdn.mathjax.org"
+                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: mediastream: blob: filesystem: " + 
+                  "*.dify.ai *.udify.app udify.app " +
+                  "*.cloudflareinsights.com static.cloudflareinsights.com " +
+                  "*.sentry.io " + 
+                  "localhost:* 127.0.0.1:* " +
+                  "*.busuanzi.ibruce.info " +
+                  "*.elemecdn.com npm.elemecdn.com " +
+                  "*.mathjax.org cdn.mathjax.org " +
+                  "https://log.cookieyes.com https://cdn-cookieyes.com " +
+                  "https://analytics.google.com " +
+                  "*.googletagmanager.com https://www.google-analytics.com " +
+                  "https://api.github.com " + 
+                  "https://cdnjs.cloudflare.com"
               }
             ]
           }
