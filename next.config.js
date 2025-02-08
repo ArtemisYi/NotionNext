@@ -190,19 +190,22 @@ const nextConfig = {
               },
               {
                 key: 'Content-Security-Policy',
-                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: mediastream: blob: filesystem: " + 
-                  "*.dify.ai *.udify.app udify.app " +
+                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+                  "data: mediastream: blob: filesystem: " + 
+                  "*.dify.ai *.udify.app *.udify.app " +
                   "*.cloudflareinsights.com static.cloudflareinsights.com " +
-                  "*.sentry.io " + 
+                  "*.sentry.io sentry.io " + 
                   "localhost:* 127.0.0.1:* " +
-                  "*.busuanzi.ibruce.info " +
+                  "busuanzi.ibruce.info *.busuanzi.ibruce.info " +
                   "*.elemecdn.com npm.elemecdn.com " +
                   "*.mathjax.org cdn.mathjax.org " +
-                  "https://log.cookieyes.com https://cdn-cookieyes.com " +
-                  "https://analytics.google.com " +
-                  "*.googletagmanager.com https://www.google-analytics.com " +
-                  "https://api.github.com " + 
-                  "https://cdnjs.cloudflare.com"
+                  "log.cookieyes.com cdn-cookieyes.com " +
+                  "analytics.google.com " +
+                  "*.googletagmanager.com googletagmanager.com www.google-analytics.com " +
+                  "api.github.com " + 
+                  "cdnjs.cloudflare.com " +
+                  // 添加 nonce 支持
+                  "'nonce-${nonce}'"
               }
             ]
           }
