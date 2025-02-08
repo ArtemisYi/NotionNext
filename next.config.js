@@ -187,34 +187,6 @@ const nextConfig = {
                 key: 'Access-Control-Allow-Headers',
                 value:
                   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-              },
-              {
-                key: 'Content-Security-Policy',
-                value: `
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: 
-      'nonce-M2NiMTE5YTAtNjE1Mi00MmQyLWFmNGQtNGZkOTIwMTk2NWVm' 
-      *.dify.ai *.udify.app *.cloudflareinsights.com 
-      *.googletagmanager.com *.google-analytics.com 
-      cdn-cookieyes.com cdnjs.cloudflare.com cdn.mathjax.org 
-      'unsafe-inline';
-    style-src 'self' 'unsafe-inline' *.dify.ai *.udify.app data:;
-    img-src 'self' data: blob: https: http:;
-    font-src 'self' data: fonts.gstatic.com;
-    connect-src 'self' 
-      *.dify.ai *.udify.app 
-      wss://*.dify.ai wss://*.udify.app 
-      *.sentry.io *.google-analytics.com 
-      *.googletagmanager.com;
-    frame-src 'self' *.googletagmanager.com *.dify.ai *.udify.app;
-    media-src 'self' blob: *.cloudflareinsights.com *.dify.ai *.udify.app;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self' https:;
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-    report-uri https://c71nbt6z73dy80tthsvjxx31le866ivx.aed.pr.01es.io/consume?endpointId=cujl708f88gmt00jzq50;
-  `.replace(/\s+/g, ' ').trim()
               }
             ]
           }
