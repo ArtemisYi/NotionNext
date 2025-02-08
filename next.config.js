@@ -189,6 +189,15 @@ const nextConfig = {
                   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
               }
             ]
+          },
+          {
+            source: '/(.*)', // 匹配所有路径
+            headers: [
+              {
+                key: 'Content-Security-Policy',
+                value: "default-src 'self'; script-src 'self' https://cdn.mathjax.org; object-src none;"
+              }
+            ]
           }
         ]
       },
