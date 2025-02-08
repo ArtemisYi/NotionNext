@@ -190,20 +190,31 @@ const nextConfig = {
               },
               {
                 key: 'Content-Security-Policy',
-                value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
-                  "data: mediastream: blob: filesystem: " + 
-                  "*.dify.ai *.udify.app udify.app " +
-                  "https://*.cloudflareinsights.com https://static.cloudflareinsights.com " +
-                  "https://*.sentry.io https://sentry.io " + 
-                  "http://localhost:* http://127.0.0.1:* " +
-                  "https://*.busuanzi.ibruce.info https://busuanzi.ibruce.info " +
-                  "https://*.elemecdn.com https://npm.elemecdn.com " +
-                  "https://*.mathjax.org https://cdn.mathjax.org " +
-                  "https://log.cookieyes.com https://cdn-cookieyes.com " +
-                  "https://analytics.google.com " +
-                  "https://*.googletagmanager.com https://www.google-analytics.com " +
-                  "https://api.github.com " + 
-                  "https://cdnjs.cloudflare.com"
+                value: `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: 
+      'nonce-M2NiMTE5YTAtNjE1Mi00MmQyLWFmNGQtNGZkOTIwMTk2NWVm' 
+      *.dify.ai *.udify.app *.cloudflareinsights.com 
+      *.googletagmanager.com *.google-analytics.com 
+      cdn-cookieyes.com cdnjs.cloudflare.com cdn.mathjax.org 
+      'unsafe-inline';
+    style-src 'self' 'unsafe-inline' *.dify.ai *.udify.app data:;
+    img-src 'self' data: blob: https: http:;
+    font-src 'self' data: fonts.gstatic.com;
+    connect-src 'self' 
+      *.dify.ai *.udify.app 
+      wss://*.dify.ai wss://*.udify.app 
+      *.sentry.io *.google-analytics.com 
+      *.googletagmanager.com;
+    frame-src 'self' *.googletagmanager.com *.dify.ai *.udify.app;
+    media-src 'self' blob: *.cloudflareinsights.com *.dify.ai *.udify.app;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self' https:;
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+    report-uri https://c71nbt6z73dy80tthsvjxx31le866ivx.aed.pr.01es.io/consume?endpointId=cujl708f88gmt00jzq50;
+  `.replace(/\s+/g, ' ').trim()
               }
             ]
           }
