@@ -192,20 +192,18 @@ const nextConfig = {
                 key: 'Content-Security-Policy',
                 value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
                   "data: mediastream: blob: filesystem: " + 
-                  "*.dify.ai *.udify.app *.udify.app " +
-                  "*.cloudflareinsights.com static.cloudflareinsights.com " +
-                  "*.sentry.io sentry.io " + 
-                  "localhost:* 127.0.0.1:* " +
-                  "busuanzi.ibruce.info *.busuanzi.ibruce.info " +
-                  "*.elemecdn.com npm.elemecdn.com " +
-                  "*.mathjax.org cdn.mathjax.org " +
-                  "log.cookieyes.com cdn-cookieyes.com " +
-                  "analytics.google.com " +
-                  "*.googletagmanager.com googletagmanager.com www.google-analytics.com " +
-                  "api.github.com " + 
-                  "cdnjs.cloudflare.com " +
-                  // 添加 nonce 支持
-                  "'nonce-${nonce}'"
+                  "*.dify.ai *.udify.app udify.app " +
+                  "https://*.cloudflareinsights.com https://static.cloudflareinsights.com " +
+                  "https://*.sentry.io https://sentry.io " + 
+                  "http://localhost:* http://127.0.0.1:* " +
+                  "https://*.busuanzi.ibruce.info https://busuanzi.ibruce.info " +
+                  "https://*.elemecdn.com https://npm.elemecdn.com " +
+                  "https://*.mathjax.org https://cdn.mathjax.org " +
+                  "https://log.cookieyes.com https://cdn-cookieyes.com " +
+                  "https://analytics.google.com " +
+                  "https://*.googletagmanager.com https://www.google-analytics.com " +
+                  "https://api.github.com " + 
+                  "https://cdnjs.cloudflare.com"
               }
             ]
           }
